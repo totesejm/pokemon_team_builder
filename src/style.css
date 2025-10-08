@@ -1,0 +1,257 @@
+:root {
+  --bg: linear-gradient(180deg, #60a5fa 0%, #38bdf8 40%, #4ade80 100%);
+  --muted: rgba(255, 255, 255, 0.8);
+}
+
+body {
+  font-family: Inter, system-ui, Arial;
+  background: url('aero-bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  color: #f8fafc;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* Header*/
+.header {
+  padding: 1rem;
+  text-align: center;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), rgba(37, 99, 235, 0.6));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.container {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  flex: 1;
+}
+
+/*Glass Cards (Pokedex and Team Panels) */
+.pokedex {
+  flex: 1;
+}
+
+.teamview {
+  width: 320px;
+  padding: 1rem;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.teamview::before,
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.8),
+    transparent
+  );
+}
+
+.teamview::after,
+.card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.8),
+    transparent,
+    rgba(255, 255, 255, 0.3)
+  );
+}
+
+/* Pokémon Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+/* Glass Cards */
+.card {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.sprite {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+}
+
+.card-body {
+  width: 100%;
+}
+
+/*Button */
+button {
+  --hue: 140;
+  --sat: 0.6;
+  --glow-intensity: 0.7;
+
+  --fg: white;
+  --bg: oklch(75% var(--sat) var(--hue) / 0.8);
+  --bg-dark: oklch(45% var(--sat) var(--hue) / 0.75);
+  --bottom-glow: radial-gradient(
+    farthest-corner at bottom center,
+    rgba(255, 255, 255, var(--glow-intensity)),
+    transparent
+  );
+
+  background-color: var(--bg);
+  background:
+    var(--bottom-glow),
+    linear-gradient(to bottom, var(--bg-dark), var(--bg));
+  border: 1px solid var(--bg);
+  border-radius: 9999px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+  color: var(--fg);
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "Segoe UI", system-ui, sans-serif;
+  font-weight: 700;
+  text-shadow: 0 2px 0.5em rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  position: relative;
+  transition: all 300ms ease;
+  user-select: none;
+  -webkit-user-select: none;
+  padding: 0.5em 1.5em;
+  font-size: 0.9rem;
+}
+
+button::after {
+  content: "";
+  position: absolute;
+  top: 4%;
+  left: 0.75em;
+  width: calc(100% - 1.5em);
+  height: 40%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.1)
+  );
+  border-radius: inherit;
+  transition: background 400ms ease;
+  pointer-events: none;
+}
+
+button:hover,
+button:focus {
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.4);
+  transform: translateY(-1px);
+}
+
+button:active {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transform: translateY(1px);
+}
+
+button[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Search Bar */
+.searchbar {
+  margin-bottom: 1rem;
+}
+
+.searchbar input {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.searchbar input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Team Slots */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.team-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.team-slot img {
+  width: 72px;
+  height: 72px;
+}
+
+.team-slot.empty {
+  opacity: 0.5;
+}
+
+.footer {
+  text-align: center;
+  padding: 0.8rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}

@@ -1,0 +1,168 @@
+:root {
+  --bg: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+  --glass-bg: rgba(255, 255, 255, 0.15);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --card: rgba(255, 255, 255, 0.2);
+  --muted: #e2e8f0;
+}
+
+body {
+  font-family: Inter, system-ui, Arial;
+  background: var(--bg);
+  background-attachment: fixed;
+  background-size: cover;
+  margin: 0;
+  color: #0f172a;
+}
+
+.header {
+  padding: 1rem;
+  text-align: center;
+  color: white;
+  background: rgba(37, 99, 235, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.container {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.pokedex {
+  flex: 1;
+}
+
+.teamview {
+  width: 320px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  background: var(--card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.sprite {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+}
+
+.card-body {
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-weight: 500;
+}
+
+.actions {
+  margin-top: 0.5rem;
+}
+
+button {
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  border: none;
+  background: rgba(16, 185, 129, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background: rgba(16, 185, 129, 1);
+}
+
+button[disabled] {
+  background: rgba(148, 163, 184, 0.6);
+  cursor: not-allowed;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.team-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem;
+  border-radius: 10px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+}
+
+.team-slot img {
+  width: 72px;
+  height: 72px;
+}
+
+.team-slot.empty {
+  opacity: 0.5;
+}
+
+.searchbar {
+  margin-bottom: 1rem;
+}
+
+.searchbar input {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: white;
+}
+
+.searchbar input::placeholder {
+  color: var(--muted);
+}
+
+.footer {
+  text-align: center;
+  padding: 0.6rem;
+  color: var(--muted);
+}
+
+.hint {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
