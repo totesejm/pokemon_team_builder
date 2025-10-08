@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import useFetch from '../hooks/useFetch'
-import PokemonCard from './PokemonCard'
+import PokemonCard from './Pokemoncard'
 import SearchBar from './SearchBar'
 
 const LIST_URL = 'https://pokeapi.co/api/v2/pokemon?limit=151'
